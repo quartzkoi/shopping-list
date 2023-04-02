@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping List Creator</title>
+    <style>
+		body {
+		background-color: lavender;
+		}
+		li {
+			margin-bottom: 25px;
+		}
+
+    </style>
+  </head>
+  <body>
+
+    <h1>Todays shopping list</h1>
+
+    <div>
+      <label for="item">What do you need to pick up today?</label>
+	  
+      <input type="text" name="item" id="name">
+	  
+      <button>Add item</button>
+    </div>
+
+    <ol>
+
+    </ol>
+
+    <script>
+		const list = document.querySelector('ol');
+		const input = document.querySelector('input');
+		const button = document.querySelector('button');
+
+		button.addEventListener('click', () => {
+			const myItem = input.value;
+			input.value = '';
+
+			const listItem = document.createElement('li');
+			const listText = document.createElement('text');
+			const listBtn = document.createElement('button');
+
+			listItem.appendChild(listText);
+			listText.textContent = myItem;
+			listItem.appendChild(listBtn);
+			listBtn.textContent = 'Delete Entry';
+			list.appendChild(listItem);
+
+			listBtn.addEventListener('click', () => {
+				list.removeChild(listItem);
+			});
+		input.focus();
+		});
+    </script>
+  </body>
+</html>
